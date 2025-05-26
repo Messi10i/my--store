@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Details</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    #product-detail {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    #product-detail img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    #product-detail h2 {
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    #product-detail p {
+      max-width: 600px;
+      font-size: 16px;
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    #product-detail .price {
+      font-size: 24px;
+      color: #007bff;
+      font-weight: bold;
+      margin-bottom: 25px;
+    }
+
+    .cart-button, .back-button {
+      padding: 12px 28px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 10px;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .cart-button:hover,
+    .back-button:hover {
+      background-color: #0056b3;
+    }
+
+    .error {
+      color: red;
+      font-weight: bold;
+      font-size: 18px;
+      text-align: center;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Product Details</h1>
+    </div>
+  </header>
+
+  <main>
+    <div class="container" id="product-detail">
+      <!-- Product content loads here -->
+    </div>
+  </main>
+
+  <script>
+    function addToCart() {
+      const product = JSON.parse(localStorage.getItem('selectedProduct'));
+      if (!product) {
+        alert("Error: No product selected!");
+        return;
+      }
+
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const exists = cart.some(item =>
+        item.name === product.name &&
+        item.price === product.price
+      );
+
+      if (!exists) {
+        cart.push(product);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert(`"${product.name}" added to cart!`);
+      } else {
+        alert("This product is already in your cart!");
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const product = JSON.parse(localStorage.getItem('selectedProduct'));
+      const container = document.getElementById('product-detail');
+
+      if (product) {
+        container.innerHTML = `
+          <img src="${product.img}" alt="${product.name}">
+          <h2>${product.name}</h2>
+          <p>${product.description || "No description available."}</p>
+          <div class="price">${product.price}</div>
+          <button id="addToCartBtn" class="cart-button">Add to Cart</button>
+          <a href="index.html" class="back-button">Back to Products</a>
+        `;
+
+        document.getElementById('addToCartBtn').addEventListener('click', addToCart);
+      } else {
+        container.innerHTML = '<p class="error">No product selected</p>';
+      }
+    });
+  </script>
+</body>
+    </html>
