@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .auth-container {
+      max-width: 400px;
+      margin: 60px auto;
+      padding: 30px;
+      background: #fefefe;
+      border-radius: 16px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    .auth-container h2 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+    .auth-container input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 18px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    .auth-container button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #28a745, #00b86b);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+    .auth-container button:hover {
+      background: linear-gradient(135deg, #1e7e34, #00995a);
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-container">
+    <h2>Create Your Account</h2>
+    <form>
+      <input type="text" placeholder="Full Name" required />
+      <input type="email" placeholder="Email" required />
+      <input type="password" placeholder="Password" required />
+      <button type="submit">Sign Up</button>
+    </form>
+  </div>
+</body>
+</html>
