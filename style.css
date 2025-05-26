@@ -1,0 +1,653 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+body {
+
+    font-family: 'Poppins', sans-serif;
+
+    line-height: 1.6; 
+
+    color: #333; 
+
+    background-color: #f8f8f8;
+
+    direction: ltr; 
+
+    text-align: left;
+
+}
+
+.container { /* کلاسی برای ایجاد محدودیت عرض و وسط‌چین کردن محتوا */
+
+    width: 90%;
+
+    max-width: 1200px;
+
+    margin: 0 auto; /* وسط‌چین کردن */
+
+    padding: 20px 0;
+
+}
+
+a { /* استایل پیش‌فرض لینک‌ها */
+
+    text-decoration: none; /* حذف خط زیر لینک */
+
+    color: #007bff; /* رنگ آبی روشن */
+
+}
+
+
+
+a:hover { /* رنگ لینک هنگام نگه داشتن موس روی آن */
+
+    color: #0056b3;
+
+}
+
+.btn { /* استایل دکمه‌های عمومی */
+
+    display: inline-block; /* نمایش به صورت بلوک اما در یک خط */
+
+    background-color: #007bff;
+
+    color: #fff;
+
+    padding: 10px 20px;
+
+    border-radius: 5px; /* گوشه‌های گرد */
+
+    transition: background-color 0.3s ease; /* انیمیشن نرم برای تغییر رنگ پس‌زمینه */
+
+}
+
+
+
+.btn:hover {
+
+    background-color: #0056b3;
+
+}
+
+header {
+
+    background-color: #fff;
+
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* سایه ملایم زیر هدر */
+
+    padding: 15px 0;
+
+}
+
+
+
+header nav {
+
+    display: flex; /* استفاده از فلکس‌باکس برای چیدمان عناصر ناوبری */
+
+    justify-content: space-between; /* پخش کردن عناصر در طول افقی */
+
+    align-items: center; /* تراز عمودی عناصر */
+
+}
+
+.logo a {
+
+    font-size: 28px;
+
+    font-weight: bold;
+
+    color: #333;
+
+}
+
+
+
+.nav-links {
+
+    list-style: none; /* حذف بولت لیست */
+
+    display: flex;
+
+}
+
+
+
+.nav-links li {
+
+    margin-right: 25px; /* فاصله بین آیتم‌های منو */
+
+}
+
+
+
+.nav-links a {
+
+    font-size: 18px;
+
+    color: #555;
+
+    transition: color 0.3s ease;
+
+}
+
+
+
+.nav-links a:hover {
+
+    color: #007bff;
+
+}
+
+
+
+.cart-icon a {
+
+    font-size: 22px;
+
+    color: #555;
+
+}
+
+
+
+/* Hero Section */
+
+.hero-section {
+
+    /* پس‌زمینه با تصویر و گرادیانت تیره */
+
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/hero-bg.jpg') no-repeat center center/cover;
+
+    color: #fff;
+
+    text-align: center;
+
+    padding: 100px 0;
+
+}
+
+
+
+.hero-section h1 {
+
+    font-size: 48px;
+
+    margin-bottom: 20px;
+
+}
+
+
+
+.hero-section p {
+
+    font-size: 20px;
+
+    margin-bottom: 30px;
+
+}
+
+.products-section {
+
+    padding: 50px 0;
+
+    background-color: #fff;
+
+}
+
+.products-section h2 {
+
+    text-align: center;
+
+    font-size: 36px;
+
+    margin-bottom: 40px;
+
+    color: #333;
+
+}
+
+
+
+.product-grid { /* گرید برای چیدمان کارت‌های محصول */
+
+    display: grid;
+
+    /* ستون‌ها به صورت خودکار تنظیم می‌شوند و حداقل عرض ۲۸۰px و حداکثر ۱fr (یک بخش از فضای موجود) دارند */
+
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+    gap: 30px; /* فاصله بین گریدها */
+
+}
+
+
+
+.product-card {
+
+    background-color: #fff;
+
+    border: 1px solid #eee;
+
+    border-radius: 8px;
+
+    padding: 20px;
+
+    text-align: center;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* انیمیشن نرم برای هاور */
+
+}
+
+.product-card:hover {
+
+    transform: translateY(-5px); /* کمی بالا رفتن کارت در هاور */
+
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1); /* سایه پررنگ‌تر در هاور */
+
+}
+
+
+
+.product-card img {
+
+    max-width: 100%;
+
+    height: 250px; /* ارتفاع ثابت برای تصاویر محصول */
+
+    object-fit: cover; /* برش تصویر برای پر کردن کادر */
+
+    border-radius: 5px;
+.cart-item {
+  background: #f9f9f9;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+}
+    margin-bottom: 15px;
+
+}
+.cart-item {
+  background: #f9f9f9;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+}
+
+
+.product-card h3 {
+
+    font-size: 22px;
+
+    margin-bottom: 10px;
+
+    color: #333;
+
+}
+
+
+
+.product-card p {
+
+    font-size: 16px;
+
+    color: #666;
+
+    margin-bottom: 15px;
+
+}
+
+
+
+.product-card .price {
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+    color: #007bff;
+
+    margin-bottom: 15px;
+
+}
+
+.color-options {
+
+    display: flex;
+
+    justify-content: center;
+
+    margin-bottom: 15px;
+
+}
+
+
+
+.color-box {
+
+    width: 30px;
+
+    height: 30px;
+
+    border-radius: 50%; /* دایره‌ای کردن */
+
+    margin: 0 5px;
+
+    cursor: pointer; /* نشانگر موس به شکل دست */
+
+    border: 2px solid transparent; /* کادر شفاف اولیه */
+
+    transition: all 0.2s ease;
+
+}
+
+
+
+.color-box:hover {
+
+    border-color: #007bff; /* کادر آبی هنگام هاور */
+
+    transform: scale(1.1); /* کمی بزرگ‌تر شدن */
+
+}
+
+
+
+/* تعریف رنگ‌ها با کلاس‌های مربوطه */
+
+.color-box.red { background-color: #ff0000; }
+
+.color-box.blue { background-color: #0000ff; }
+
+.color-box.green { background-color: #008000; }
+
+.color-box.black { background-color: #000000; }
+
+.color-box.white { background-color: #ffffff; border-color: #ccc; } /* برای رنگ سفید، یک کادر روشن */
+
+
+
+/* Size Options */
+
+.size-options {
+
+    display: flex;
+
+    justify-content: center;
+
+    margin-bottom: 20px;
+
+}
+
+
+
+.size-box {
+
+    padding: 8px 12px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 5px;
+
+    margin: 0 5px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    transition: all 0.2s ease;
+
+}
+
+
+
+.size-box:hover,
+
+.size-box.selected { /* کلاس 'selected' با جاوااسکریپت اضافه می‌شود */
+
+    background-color: #007bff;
+
+    color: #fff;
+
+    border-color: #007bff;
+
+}
+
+.product-card .add-to-cart {
+
+    background-color: #28a745; /* رنگ سبز */
+
+    color: #fff;
+
+    border: none;
+
+    padding: 12px 25px;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    transition: background-color 0.3s ease;
+
+}
+
+
+
+.product-card .add-to-cart:hover {
+
+    background-color: #218838;
+
+}
+
+
+
+/* Footer */
+
+.footer {
+  background-color: #111;
+  color: #eee;
+  padding: 40px 0;
+  font-family: sans-serif;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+}
+.footer h3 {
+  margin-bottom: 15px;
+}
+.footer a {
+  color: #ccc;
+  text-decoration: none;
+}
+.footer a:hover {
+  color: #fff;
+}
+.footer ul {
+  list-style: none;
+  padding: 0;
+}
+.footer-newsletter input {
+  padding: 8px;
+  width: 80%;
+  margin-bottom: 10px;
+}
+.footer-newsletter button {
+  padding: 8px 16px;
+  background-color: #e91e63;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.social-icons a {
+  margin: 0 10px;
+  color: #fff;
+  font-size: 20px;
+  display: inline-block;
+  transition: transform 0.3s, color 0.3s;
+}
+.social-icons a:hover {
+  transform: scale(1.2);
+  color: #00aced;
+}
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #444;
+  margin-top: 30px;
+}
+
+
+
+/* Responsive Design (طراحی واکنش‌گرا) */
+
+@media (max-width: 768px) { /* استایل‌هایی که برای صفحه‌های با عرض ۷۶۸ پیکسل یا کمتر اعمال می‌شوند */
+
+    header nav {
+
+        flex-direction: column; /* در صفحه‌های کوچک، آیتم‌های ناوبری به صورت عمودی قرار می‌گیرند */
+
+    }
+
+    .nav-links {
+
+        margin-top: 15px;
+
+        flex-wrap: wrap; /* اگر لینک‌ها جا نشدند، به خط بعدی می‌روند */
+
+        justify-content: center;
+
+    }
+
+    .nav-links li {
+
+        margin: 0 10px 10px 10px;
+
+    }
+
+    .hero-section h1 {
+
+        font-size: 36px;
+
+    }
+
+    .hero-section p {
+
+        font-size: 18px;
+
+    }
+
+    .product-grid {
+
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* کارت‌های محصول کمی کوچکتر می‌شوند */
+
+    }
+
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20px 0;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #333;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+/* نسخه موبایل */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+}
+/* Nav button styles */
+.nav-btn {
+  display: inline-block;
+  padding: 8px 20px;
+  margin: 6px 8px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 15px;
+  color: #fff;
+  background: linear-gradient(135deg, #007bff, #00c6ff);
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-btn:hover {
+  background: linear-gradient(135deg, #0056b3, #009ecf);
+  transform: scale(1.05);
+}
+
+/* Different color for Sign Up */
+.signup-btn {
+  background: linear-gradient(135deg, #28a745, #00b86b);
+}
+.signup-btn:hover {
+  background: linear-gradient(135deg, #1e7e34, #00995a);
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links li {
+    width: 100%;
+    margin: 8px 0;
+  }
+
+  .nav-btn {
+    width: 90%;
+    text-align: center;
+  }
+                                     }
