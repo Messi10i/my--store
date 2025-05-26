@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shopping Cart</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .cart-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      border-bottom: 1px solid #ccc;
+      padding: 15px 0;
+    }
+
+    .cart-item img {
+      width: 80px;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    .cart-info {
+      flex: 1;
+    }
+
+    .cart-info strong {
+      font-size: 18px;
+    }
+
+    .cart-info span {
+      display: block;
+      margin: 3px 0;
+    }
+
+    #cart-total {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    #checkout-btn {
+      margin-top: 20px;
+      padding: 10px 25px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    #checkout-btn:hover {
+      background-color: #0056b3;
+    }
+
+    button.delete-btn {
+      margin-top: 8px;
+      padding: 5px 10px;
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button.delete-btn:hover {
+      background-color: #c82333;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Your Cart</h1>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div id="cart-items"></div>
+      <div id="cart-total"></div>
+      <button id="checkout-btn">Buy</button>
+    </div>
+  </main>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const container = document.getElementById("cart-items");
+    const totalContainer = document.getElementById("cart-total");
+
+    const grouped = {};
+    cart.forEach(item => {
+      if (!grouped[item.name]) {
+        grouped[item.name] = { ...item, count: 1 };
+      } else {
+        grouped[item.name].count++;
+      }
+    });
+
+    let totalPrice = 0;
+    Object.values(grouped).forEach(item => {
+      const itemTotal = item.count * parseFloat(item.price.replace("$", ""));
+      totalPrice += itemTotal;
+
+      const div = document.createElement("div");
+      div.className = "cart-item";
+      div.innerHTML = `
+        <img src="${item.img}" alt="${item.name}">
+        <div class="cart-info">
+          <strong>${item.name}</strong>
+          <span>Quantity: ${item.count}</span>
+          <span>Unit Price: ${item.price}</span>
+          <span>Subtotal: $${itemTotal.toFixed(2)}</span>
+          <button class="delete-btn" onclick="removeItem('${item.name}')">Delete</button>
+        </div>
+      `;
+      container.appendChild(div);
+    });
+
+    totalContainer.innerHTML = `<h3>Total: $${totalPrice.toFixed(2)}</h3>`;
+
+    function removeItem(name) {
+      cart = cart.filter(item => item.name !== name);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      location.reload();
+    }
+
+    document.getElementById("checkout-btn").addEventListener("click", () => {
+      alert("The payment was successfully made!");
+      localStorage.removeItem("cart");
+      location.reload();
+    });
+  </script>
+</body>
+</html>
